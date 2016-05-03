@@ -13,7 +13,6 @@ import time
 import serial
 import Queue
 
-# on the Raspberry Pi the serial port is ttyAMA0
 PORT = '/dev/tty.usbserial-A104IC2U'
 BAUD_RATE = 9600
 
@@ -36,7 +35,6 @@ def message_received(data):
         print 'gotta packet'
 
 def sendPacket(where, what):
-        # I'm only going to send the absolute minimum.
         zb.send('tx',
                 dest_addr_long = where,
                 # I always use the 'unknown' value for this
@@ -45,15 +43,7 @@ def sendPacket(where, what):
                 dest_addr = UNKNOWN,
                 data = what)
 
-# In my house network sending a '?\r' (question mark, carriage
-# return) causes the controller to send a packet with some status
-# information in it as a broadcast.  As a test, I'll send it and
-# the receive above should catch the response.
 def sendQueryPacket():
-        # I'm broadcasting this message only
-        # because it makes it easier for a monitoring
-        # XBee to see the packet.  This is a test
-        # module, remember?
         print 'sending query packet'
         sendPacket(BROADCAST, '?\r')
 
