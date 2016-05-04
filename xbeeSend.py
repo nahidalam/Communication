@@ -13,7 +13,6 @@ BAUD_RATE = 9600
 
 UNKNOWN = '\xff\xfe' 
 WHERE = '\x00\x13\xA2\x00\x40\xF7\x0A\x50'
-#WHERE='0013A20040F70A50'
 dataString='Hello\n'
 
 # Open serial port
